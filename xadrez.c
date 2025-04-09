@@ -1,54 +1,61 @@
 #include <stdio.h>
 
-int main() {
-    // declaração das variáveis
-    int inicioTorre = 1, inicioBispo = 1;
-
-    // movimentação das peças
-
-    // movimentação da torre
-    printf("Torre: \n");
-
-    while(inicioTorre <= 5) {
+// função recursiva para mover a torre
+void movimentarTorre(int num) {
+    if (num > 0) {
         printf("Direita. \n");
-        inicioTorre++;
+        movimentarTorre(num - 1);
     }
+}
 
-    printf("-----------------\n");
+// função recursiva para mover a rainha
+void movimentarRainha(int num) {
+    if (num > 0) {
+        printf("Esquerda. \n");
+        movimentarRainha(num - 1);
+    }
+}
+
+// função recursiva para mover o bispo
+void movimentarBispo(int num) {
+    if (num > 0) {
+        printf("Direita, Cima. \n");
+        movimentarBispo(num - 1);
+    }
+}
+
+int main() {
+
+    printf("\n");
+    printf("Movimentacao das pecas de xadrez. \n");
+    printf("\n");
+
+    // movimento da torre
+    printf("Torre. \n");
+    movimentarTorre(5);
+    printf("\n");
+
+    // movimentação da rainha
+    printf("Rainha. \n");
+    movimentarRainha(8);
+    printf("\n");
 
     // movimentação do bispo
-    printf("Bispo: \n");
+    printf("Bispo. \n");
+    movimentarBispo(5);
+    printf("\n");
 
-    do {
-        printf("Cima, Direita. \n");
-        inicioBispo++;
-    } while (inicioBispo <= 5);
+    // movimentação do cavalo
+    printf("Cavalo. \n");
+    for (int i = 1; i > 0; i--) {
 
-    printf("-----------------\n");
-
-    // movimentação rainha
-    printf("Rainha: \n");
-
-    for(int i = 0; i < 8; i++) {
-        printf("Esquerda. \n");
-    }
-
-    printf("-----------------\n");
-
-    // movimentação cavalo
-    printf("Cavalo: \n");
-
-    for(int i = 0; i < 1; i++) {
-        int j = 0;
-
-        while(j < 2) {
-            printf("Baixo. \n");
-            j++;
+        for (int j = 2; j > 0 && i > 0; j--) {
+            printf("Cima. \n");
         }
-
-        printf("Esquerda. \n");
-    }   
-
+        
+        printf("Direita. \n");
+    }
+    printf("\n");
 
     return 0;
 }
